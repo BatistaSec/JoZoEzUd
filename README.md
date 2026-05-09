@@ -1,5 +1,5 @@
 # João Batista 🇧🇷  
-💻 Desenvolvedor Backend | ☁️ Cloud Enthusiast  
+💻 Desenvolvedor Backend | ☁️ Cloud Enthusiast | 🛡 AppSec
 
 ---
 
