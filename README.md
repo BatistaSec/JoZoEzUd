@@ -45,3 +45,6 @@ API REST desenvolvida para gerenciamento de usuários, com foco em **segurança*
 ## 🌐 Contato
 📎 [LinkedIn](https://www.linkedin.com/in/joão-batista-2206321t)  
 📧 Email: joao_jozo@outlook.com  
+
+### Languages
+```🇧🇷 Portuguese — Native``` · ```🇺🇸 English — intermediary```
