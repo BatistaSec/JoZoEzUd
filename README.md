@@ -27,6 +27,12 @@
 
 ## 🌟 Projetos em Destaque
 
+### 🔐 [Gerenciamento de Usuários - API](https://github.com/BatistaSec/Gerenciamento-de-Usuarios---API)
+API REST desenvolvida para gerenciamento de usuários, com foco em **segurança**, **boas práticas** e **autenticação robusta**.
+
+<p align="center">
+</p>
+
 ---
 
 ## 🎨 Estilo Extra
