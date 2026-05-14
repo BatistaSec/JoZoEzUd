@@ -1,609 +1,846 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
- 
-  <!-- SEO -->
   <title>João Batista — Software Engineer</title>
-  <meta name="description" content="Software Engineer especializado em Java, Spring Boot e arquiteturas back-end robustas. Buscando primeira oportunidade. Baseado em São Paulo, BR." />
+  <meta name="description" content="Software Engineer especializado em Java, Spring Boot e arquiteturas back-end. Buscando primeira oportunidade. São Paulo, BR." />
   <meta name="author" content="João Batista" />
-  <meta name="keywords" content="software engineer, java, spring boot, postgresql, docker, aws, back-end developer, são paulo" />
- 
-  <!-- Open Graph -->
+  <meta property="og:title" content="João Batista — Software Engineer" />
+  <meta property="og:description" content="Software Engineer especializado em Java, Spring Boot e arquiteturas back-end. Buscando primeira oportunidade." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://jo-zo-ez-ud.vercel.app/" />
-  <meta property="og:title" content="João Batista — Software Engineer" />
-  <meta property="og:description" content="Software Engineer especializado em Java, Spring Boot e arquiteturas back-end robustas. Buscando primeira oportunidade." />
-  <meta property="og:image" content="https://opengraph.githubassets.com/93a1404969bc61b4e90d6948b842eef62e5ae7b2e1fdcd37a6719bef5fc07c2e/BatistaSec/Gerenciamento-de-Usuarios---API" />
- 
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="João Batista — Software Engineer" />
-  <meta name="twitter:description" content="Software Engineer especializado em Java, Spring Boot e arquiteturas back-end robustas." />
- 
-  <!-- Fonts -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300;1,9..144,400&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
- 
+
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
- 
+
     :root {
-      --serif: 'Fraunces', serif;
       --mono: 'JetBrains Mono', monospace;
       --sans: 'Inter', sans-serif;
-      --bg: #f8f8fb;
-      --bg2: #f0eff8;
-      --bg3: #e8e7f4;
-      --text: #16161e;
-      --muted: #7c7b8c;
-      --border: rgba(59,91,219,0.13);
-      --border2: rgba(59,91,219,0.35);
-      --accent: #3B5BDB;
-      --accent-light: #eef1fd;
-      --accent-muted: #8fa3ef;
-      --green-bg: #e8f5e1;
-      --green-text: #2d6a0f;
-      --green-dot: #4caf22;
-      --tag-bg: #ededf7;
+
+      --bg:      #0d0f14;
+      --bg2:     #13161d;
+      --bg3:     #1a1d26;
+      --bg4:     #20232e;
+      --border:  rgba(255,255,255,0.07);
+      --border2: rgba(255,255,255,0.14);
+
+      --text:    #e2e4f0;
+      --muted:   #5a5f7a;
+      --dim:     #3a3f5a;
+
+      --blue:    #5b8dee;
+      --blue-dim:#2a3a6e;
+      --blue-bg: rgba(91,141,238,0.08);
+      --green:   #4ec97b;
+      --green-bg:rgba(78,201,123,0.1);
+      --yellow:  #e5c76b;
+      --red:     #e06c75;
+      --purple:  #c792ea;
+      --cyan:    #56c9f0;
     }
- 
+
     html { scroll-behavior: smooth; }
- 
+
     body {
       font-family: var(--sans);
       background: var(--bg);
       color: var(--text);
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      background-image: repeating-linear-gradient(
-        -45deg,
-        transparent,
-        transparent 28px,
-        rgba(59,91,219,0.035) 28px,
-        rgba(59,91,219,0.035) 29px
-      );
+      min-height: 100vh;
+      /* subtle grid */
+      background-image:
+        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      background-size: 40px 40px;
     }
- 
-    ::selection { background: var(--accent); color: #fff; }
- 
-    .wrap {
-      max-width: 740px;
-      margin: 0 auto;
-      padding: 0 2rem;
+
+    ::selection { background: var(--blue); color: #fff; }
+
+    /* ── LAYOUT ── */
+    .layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      min-height: 100vh;
     }
- 
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp  { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
-    @keyframes fadeIn  { from { opacity:0; } to { opacity:1; } }
-    @keyframes slideIn { from { opacity:0; transform:translateX(-14px); } to { opacity:1; transform:translateX(0); } }
-    @keyframes scaleUp { from { opacity:0; transform:scale(0.93); } to { opacity:1; transform:scale(1); } }
-    @keyframes pulse   { 0%,100%{opacity:1} 50%{opacity:.35} }
-    @keyframes lineGrow { from { transform:scaleX(0); } to { transform:scaleX(1); } }
- 
-    .au  { opacity:0; animation: fadeUp  0.6s cubic-bezier(.22,.68,0,1.1) forwards; }
-    .ai  { opacity:0; animation: fadeIn  0.5s ease forwards; }
-    .as  { opacity:0; animation: slideIn 0.5s ease forwards; }
-    .asc { opacity:0; animation: scaleUp 0.45s cubic-bezier(.22,.68,0,1.1) forwards; }
- 
-    .d1{animation-delay:.06s} .d2{animation-delay:.14s} .d3{animation-delay:.22s}
-    .d4{animation-delay:.30s} .d5{animation-delay:.38s} .d6{animation-delay:.46s}
-    .d7{animation-delay:.54s} .d8{animation-delay:.62s} .d9{animation-delay:.70s}
- 
-    /* ── NAV ── */
-    header {
+
+    /* ── SIDEBAR ── */
+    .sidebar {
       position: sticky;
       top: 0;
-      z-index: 100;
-      background: rgba(248,248,251,0.88);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 0.5px solid var(--border);
-    }
- 
-    nav {
+      height: 100vh;
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
+      border-right: 1px solid var(--border);
+      padding: 2.5rem 1.75rem;
+      background: var(--bg2);
+      overflow-y: auto;
+    }
+
+    .sid-top { margin-bottom: 2rem; }
+
+    .sid-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--blue);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.1rem;
+      display: flex;
       align-items: center;
-      padding: 1.1rem 0;
+      gap: 6px;
     }
- 
-    .nav-logo {
+    .sid-label::before { content: '</> '; color: var(--muted); }
+
+    .sid-name {
       font-family: var(--mono);
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.05em;
+      font-size: 22px;
+      font-weight: 600;
       color: var(--text);
-      text-decoration: none;
+      line-height: 1.2;
+      margin-bottom: 0.4rem;
     }
- 
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      list-style: none;
-    }
- 
-    .nav-links a {
-      font-family: var(--mono);
-      font-size: 12px;
-      color: var(--muted);
-      text-decoration: none;
-      letter-spacing: 0.02em;
-      position: relative;
-      padding-bottom: 2px;
-      transition: color 0.2s;
-    }
-    .nav-links a::after {
-      content:''; position:absolute; bottom:0; left:0;
-      width:0; height:1px; background:var(--accent);
-      transition: width 0.25s ease;
-    }
-    .nav-links a:hover { color: var(--accent); }
-    .nav-links a:hover::after { width:100%; }
- 
-    .nav-right { display:flex; gap:10px; align-items:center; }
- 
-    .lang-btn {
+
+    .sid-name span { color: var(--blue); }
+
+    .sid-role {
       font-family: var(--mono);
       font-size: 11px;
-      padding: 4px 11px;
-      border-radius: 20px;
-      border: 0.5px solid var(--border2);
-      background: none;
       color: var(--muted);
-      cursor: pointer;
-      transition: all 0.2s;
+      margin-bottom: 1.25rem;
     }
-    .lang-btn:hover { color: var(--accent); border-color: var(--accent); transform:scale(1.05); }
- 
-    /* ── HERO ── */
-    .hero {
-      padding: 6rem 0 5rem;
-      border-bottom: 0.5px solid var(--border);
-    }
- 
-    .hero-badge {
+
+    .sid-status {
       display: inline-flex;
       align-items: center;
       gap: 7px;
       font-family: var(--mono);
-      font-size: 11px;
-      color: var(--green-text);
+      font-size: 10px;
+      color: var(--green);
       background: var(--green-bg);
-      padding: 5px 12px;
-      border-radius: 20px;
-      margin-bottom: 2rem;
+      border: 1px solid rgba(78,201,123,0.2);
+      padding: 4px 10px;
+      border-radius: 4px;
     }
- 
+
     .dot {
-      width:6px; height:6px; border-radius:50%;
-      background: var(--green-dot);
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--green);
       animation: pulse 2s infinite;
     }
- 
-    .hero h1 {
-      font-family: var(--serif);
-      font-size: clamp(50px, 8vw, 70px);
-      line-height: 1.0;
-      font-weight: 300;
-      margin-bottom: 1.75rem;
-      letter-spacing: -0.02em;
-    }
- 
-    .hero h1 em { font-style:italic; color: var(--accent); }
- 
-    .hero-sub {
+
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+    /* NAV */
+    .sid-nav { display: flex; flex-direction: column; gap: 2px; margin-bottom: 2rem; }
+
+    .sid-nav-label {
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 9px;
+      color: var(--dim);
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 1.25rem;
+      padding: 0 10px;
+      margin-bottom: 6px;
+      margin-top: 1rem;
     }
- 
+
+    .sid-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 8px 10px;
+      border-radius: 6px;
+      border: 1px solid transparent;
+      transition: all 0.18s;
+      position: relative;
+    }
+    .sid-link i { font-size: 15px; flex-shrink: 0; }
+    .sid-link:hover {
+      color: var(--text);
+      background: var(--bg3);
+      border-color: var(--border);
+    }
+    .sid-link.active {
+      color: var(--blue);
+      background: var(--blue-bg);
+      border-color: rgba(91,141,238,0.2);
+    }
+    .sid-link .lk-num {
+      margin-left: auto;
+      font-size: 9px;
+      color: var(--dim);
+    }
+
+    /* SOCIAL */
+    .sid-social {
+      margin-top: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .sid-social-link {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 6px 8px;
+      border-radius: 5px;
+      transition: all 0.18s;
+    }
+    .sid-social-link i { font-size: 14px; }
+    .sid-social-link:hover { color: var(--blue); background: var(--blue-bg); }
+
+    .sid-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 1rem 0;
+    }
+
+    /* ── MAIN ── */
+    main { padding: 3rem 3.5rem; max-width: 860px; }
+
+    /* SECTION */
+    .section { margin-bottom: 4rem; }
+
+    .sec-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 2rem;
+    }
+
+    .sec-prefix {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--blue);
+    }
+
+    .sec-title {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      letter-spacing: 0.04em;
+    }
+
+    .sec-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, var(--border2), transparent);
+    }
+
+    /* ── HERO ── */
+    .hero-section { padding-top: 1rem; }
+
+    .hero-comment {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+    .hero-comment span { color: var(--dim); }
+
+    .hero-title {
+      font-family: var(--mono);
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 300;
+      line-height: 1.25;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    .hero-title .ht-const { color: var(--purple); }
+    .hero-title .ht-name  { color: var(--yellow); font-weight: 500; }
+    .hero-title .ht-eq    { color: var(--muted); }
+    .hero-title .ht-str   { color: var(--green); }
+    .hero-title .ht-semi  { color: var(--muted); }
+
     .hero-desc {
-      font-size: 15.5px;
-      line-height: 1.75;
+      font-size: 14px;
+      line-height: 1.8;
       color: var(--muted);
-      max-width: 500px;
-      margin-bottom: 2.25rem;
+      max-width: 520px;
+      margin-bottom: 2rem;
+      border-left: 2px solid var(--blue-dim);
+      padding-left: 1rem;
     }
- 
-    .hero-actions { display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
- 
+
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
     .btn-primary {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       font-family: var(--mono);
       font-size: 12px;
-      background: var(--accent);
+      background: var(--blue);
       color: #fff;
-      padding: 11px 22px;
-      border-radius: 7px;
+      padding: 9px 18px;
+      border-radius: 6px;
       text-decoration: none;
-      letter-spacing: 0.01em;
-      transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 2px 12px rgba(59,91,219,0.25);
+      border: 1px solid transparent;
+      transition: all 0.2s;
+      box-shadow: 0 0 20px rgba(91,141,238,0.2);
     }
-    .btn-primary:hover { opacity:0.88; transform:translateY(-2px); box-shadow: 0 6px 20px rgba(59,91,219,0.32); }
- 
+    .btn-primary:hover { background: transparent; border-color: var(--blue); color: var(--blue); box-shadow: 0 0 24px rgba(91,141,238,0.3); }
+
     .btn-ghost {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       font-family: var(--mono);
       font-size: 12px;
-      color: var(--accent);
+      color: var(--muted);
       text-decoration: none;
-      border-bottom: 1px solid var(--accent-muted);
-      padding-bottom: 2px;
-      transition: opacity 0.2s, gap 0.2s;
+      padding: 9px 18px;
+      border-radius: 6px;
+      border: 1px solid var(--border2);
+      transition: all 0.2s;
     }
-    .btn-ghost:hover { opacity:0.65; gap:13px; }
- 
-    /* ── SECTION HEADER ── */
-    .sec-head {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 2rem;
-    }
-    .sec-num  { font-family:var(--mono); font-size:10px; color:var(--accent-muted); min-width:20px; font-weight:500; }
-    .sec-label { font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); white-space:nowrap; }
-    .sec-line { flex:1; height:0.5px; background: linear-gradient(to right, var(--accent), transparent); transform-origin:left; animation: lineGrow 0.6s ease forwards; }
- 
-    section { padding: 4rem 0; border-bottom: 0.5px solid var(--border); }
- 
+    .btn-ghost:hover { color: var(--text); border-color: var(--border2); background: var(--bg3); }
+
     /* ── ABOUT ── */
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2.5rem;
-      align-items: start;
+      gap: 1.5rem;
     }
- 
-    .about-text p {
-      font-size: 15px;
-      line-height: 1.8;
+
+    .about-text {
+      font-size: 13.5px;
+      line-height: 1.85;
       color: var(--muted);
-      margin-bottom: 1rem;
     }
-    .about-text p:last-child { margin-bottom:0; }
-    .about-text strong { color:var(--text); font-weight:500; }
- 
-    .about-facts { display:flex; flex-direction:column; gap:12px; }
- 
+    .about-text p { margin-bottom: 0.9rem; }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-text strong { color: var(--blue); font-weight: 500; }
+
+    .about-facts { display: flex; flex-direction: column; gap: 8px; }
+
     .fact {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       gap: 12px;
-      padding: 14px;
-      border: 0.5px solid var(--border);
-      border-radius: 10px;
-      background: var(--bg2);
+      padding: 12px 14px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
       transition: border-color 0.2s, transform 0.2s;
     }
-    .fact:hover { border-color:var(--border2); transform:translateX(3px); }
-    .fact-icon { font-size:16px; color:var(--muted); margin-top:1px; flex-shrink:0; }
-    .fact-label { font-family:var(--mono); font-size:10px; color:var(--muted); letter-spacing:0.05em; text-transform:uppercase; margin-bottom:2px; }
-    .fact-value { font-size:13px; color:var(--text); font-weight:500; }
- 
+    .fact:hover { border-color: var(--border2); transform: translateX(4px); }
+    .fact-icon { font-size: 15px; color: var(--blue); flex-shrink: 0; }
+    .fact-label { font-family: var(--mono); font-size: 9px; color: var(--dim); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1px; }
+    .fact-value { font-family: var(--mono); font-size: 12px; color: var(--text); }
+
     /* ── STACK ── */
     .stack-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
       gap: 8px;
     }
- 
+
     .stack-card {
+      padding: 16px 14px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
       display: flex;
       flex-direction: column;
-      gap: 7px;
-      padding: 18px 15px;
-      border: 0.5px solid var(--border);
-      border-radius: 12px;
-      background: #fff;
+      gap: 8px;
       transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      cursor: default;
     }
-    .stack-card:hover { border-color: var(--accent); transform:translateY(-4px); box-shadow: 0 4px 18px rgba(59,91,219,0.12); }
-    .stack-card i { font-size:20px; color:var(--accent); transition:transform 0.2s; }
-    .stack-card:hover i { transform:scale(1.15); }
-    .stack-name { font-family:var(--mono); font-size:11px; font-weight:500; color:var(--text); }
-    .stack-lvl  { font-family:var(--mono); font-size:10px; color:var(--accent-muted); }
- 
+    .stack-card:hover {
+      border-color: var(--blue);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 20px rgba(91,141,238,0.12);
+    }
+    .stack-card i { font-size: 19px; color: var(--blue); transition: transform 0.2s; }
+    .stack-card:hover i { transform: scale(1.15); }
+    .stack-name { font-family: var(--mono); font-size: 11px; font-weight: 500; color: var(--text); }
+    .stack-lvl {
+      font-family: var(--mono);
+      font-size: 9px;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .lvl-dots { display: flex; gap: 3px; }
+    .lvl-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--dim); }
+    .lvl-dot.on { background: var(--blue); }
+
     /* ── EXPERIENCE ── */
-    .exp-list { display:flex; flex-direction:column; }
- 
     .exp-item {
-      display: grid;
-      grid-template-columns: 130px 1fr;
-      gap: 1.5rem;
-      padding: 1.5rem 0.5rem;
-      border-top: 0.5px solid var(--border);
-      border-radius: 6px;
-      transition: background 0.2s, padding-left 0.2s;
+      position: relative;
+      padding: 1.5rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 10px;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
-    .exp-item:hover { background:var(--bg2); padding-left:14px; }
- 
-    .exp-meta { padding-top:2px; }
-    .exp-period { font-family:var(--mono); font-size:11px; color:var(--muted); display:block; margin-bottom:6px; }
-    .exp-badge  { display:inline-block; font-family:var(--mono); font-size:9px; letter-spacing:0.06em; text-transform:uppercase; padding:3px 8px; border-radius:20px; background:var(--green-bg); color:var(--green-text); }
-    .exp-badge.past { background:var(--tag-bg); color:var(--muted); }
- 
-    .exp-role    { font-size:14px; font-weight:500; margin-bottom:3px; }
-    .exp-company { font-family:var(--mono); font-size:12px; color:var(--muted); margin-bottom:10px; }
-    .exp-desc    { font-size:13px; line-height:1.65; color:var(--muted); }
- 
+    .exp-item:hover { border-color: var(--border2); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+    .exp-item::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 20px; bottom: 20px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--blue), transparent);
+      border-radius: 2px;
+    }
+    .exp-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; gap: 12px; }
+    .exp-role { font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--text); }
+    .exp-period {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--muted);
+      background: var(--bg4);
+      border: 1px solid var(--border);
+      padding: 3px 9px;
+      border-radius: 4px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .exp-company { font-family: var(--mono); font-size: 11px; color: var(--blue); margin-bottom: 10px; }
+    .exp-desc { font-size: 13px; line-height: 1.7; color: var(--muted); }
+
     /* ── PROJECTS ── */
     .proj-tabs {
       display: flex;
-      border-bottom: 0.5px solid var(--border);
-      margin-bottom: 1.5rem;
+      gap: 4px;
+      margin-bottom: 1.25rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px;
+      width: fit-content;
     }
     .proj-tab {
-      font-family:var(--mono); font-size:12px;
-      padding: 8px 18px; color:var(--muted);
-      background:none; border:none; border-bottom: 2px solid transparent;
-      margin-bottom:-0.5px; cursor:pointer;
-      transition: all 0.2s;
-    }
-    .proj-tab:hover { color:var(--text); }
-    .proj-tab.active { color:var(--text); border-bottom-color:var(--text); }
- 
-    .proj-panel { display:none; }
-    .proj-panel.active { display:flex; flex-direction:column; gap:10px; animation: fadeUp 0.35s ease forwards; }
- 
-    .proj-card {
-      border: 0.5px solid var(--border);
-      border-radius: 12px;
-      padding: 1.4rem 1.6rem;
-      transition: border-color 0.2s, transform 0.2s;
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 6px 14px;
+      border: none;
+      border-radius: 5px;
+      background: none;
+      color: var(--muted);
       cursor: pointer;
+      transition: all 0.18s;
+    }
+    .proj-tab:hover { color: var(--text); }
+    .proj-tab.active { background: var(--blue); color: #fff; }
+
+    .proj-panel { display: none; flex-direction: column; gap: 10px; }
+    .proj-panel.active { display: flex; animation: fadeUp 0.3s ease forwards; }
+
+    @keyframes fadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+
+    .proj-card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.4rem 1.6rem;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
       position: relative;
       overflow: hidden;
-      text-decoration: none;
-      display: block;
-      color: inherit;
     }
-    .proj-card::before {
-      content:''; position:absolute; left:0; top:0;
-      width:2px; height:0; background:var(--text);
-      transition: height 0.25s ease;
+    .proj-card::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 80px; height: 80px;
+      background: radial-gradient(circle at top right, rgba(91,141,238,0.08), transparent 70%);
+      transition: opacity 0.2s;
+      opacity: 0;
     }
-    .proj-card:hover { border-color:var(--border2); transform:translateX(5px); }
-    .proj-card:hover::before { height:100%; }
- 
-    .proj-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px; gap:12px; }
-    .proj-name { font-size:14px; font-weight:500; color:var(--text); }
-    .proj-tag  { font-family:var(--mono); font-size:9px; letter-spacing:0.07em; text-transform:uppercase; color:var(--muted); border:0.5px solid var(--border); padding:3px 9px; border-radius:20px; white-space:nowrap; transition:border-color 0.2s; flex-shrink:0; }
-    .proj-card:hover .proj-tag { border-color:var(--border2); }
- 
-    .proj-desc { font-size:13px; line-height:1.65; color:var(--muted); margin-bottom:14px; }
- 
-    .proj-footer { display:flex; justify-content:space-between; align-items:center; }
-    .proj-techs { display:flex; flex-wrap:wrap; gap:5px; }
+    .proj-card:hover { border-color: var(--blue); box-shadow: 0 4px 24px rgba(91,141,238,0.1); transform: translateY(-2px); }
+    .proj-card:hover::after { opacity: 1; }
+
+    .proj-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; gap: 12px; }
+    .proj-name { font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--text); }
+    .proj-tag {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--blue);
+      background: var(--blue-bg);
+      border: 1px solid rgba(91,141,238,0.2);
+      padding: 3px 9px;
+      border-radius: 4px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .proj-desc { font-size: 13px; line-height: 1.7; color: var(--muted); margin-bottom: 14px; }
+    .proj-footer { display: flex; justify-content: space-between; align-items: center; }
+    .proj-techs { display: flex; flex-wrap: wrap; gap: 5px; }
     .tech-pill {
-      font-family:var(--mono); font-size:10px;
-      padding:3px 9px; border:0.5px solid var(--border);
-      border-radius:20px; color:var(--muted);
-      transition:all 0.15s;
+      font-family: var(--mono);
+      font-size: 10px;
+      padding: 3px 9px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--muted);
+      background: var(--bg4);
+      transition: all 0.15s;
     }
-    .proj-card:hover .tech-pill { border-color:var(--border2); color:var(--text); }
- 
-    .proj-link { font-family:var(--mono); font-size:11px; color:var(--muted); display:flex; align-items:center; gap:4px; transition:color 0.2s; flex-shrink:0; }
-    .proj-card:hover .proj-link { color:var(--text); }
- 
+    .proj-card:hover .tech-pill { border-color: var(--border2); color: var(--text); }
+    .proj-link {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: color 0.2s;
+      flex-shrink: 0;
+    }
+    .proj-card:hover .proj-link { color: var(--blue); }
+
     /* ── CONTACT ── */
-    .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
- 
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
     .contact-card {
       display: flex;
       align-items: center;
       gap: 14px;
-      padding: 1.2rem 1.4rem;
-      border: 0.5px solid var(--border);
-      border-radius: 12px;
+      padding: 1.1rem 1.3rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
       text-decoration: none;
-      color: var(--text);
-      transition: border-color 0.2s, transform 0.2s, background 0.2s;
+      color: inherit;
+      transition: all 0.2s;
     }
-    .contact-card:hover { border-color:var(--border2); transform:translateY(-2px); background:var(--bg2); }
-    .contact-card i { font-size:20px; color:var(--muted); flex-shrink:0; transition:color 0.2s; }
-    .contact-card:hover i { color:var(--text); }
-    .contact-label-sm { font-family:var(--mono); font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:2px; }
-    .contact-value-sm { font-size:13px; font-weight:500; }
- 
+    .contact-card:hover { border-color: var(--blue); background: var(--blue-bg); transform: translateY(-2px); }
+    .contact-card i { font-size: 20px; color: var(--muted); transition: color 0.2s; flex-shrink: 0; }
+    .contact-card:hover i { color: var(--blue); }
+    .contact-label-sm { font-family: var(--mono); font-size: 9px; color: var(--dim); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 3px; }
+    .contact-value-sm { font-family: var(--mono); font-size: 12px; color: var(--text); }
+
+    /* ── LANG TOGGLE ── */
+    .lang-btn {
+      font-family: var(--mono);
+      font-size: 10px;
+      padding: 5px 12px;
+      border: 1px solid var(--border2);
+      border-radius: 5px;
+      background: none;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.2s;
+      width: 100%;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .lang-btn:hover { color: var(--blue); border-color: var(--blue); background: var(--blue-bg); }
+
     /* ── FOOTER ── */
-    footer {
-      padding: 2rem 0 2rem;
+    .main-footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
- 
-    .footer-copy { font-family:var(--mono); font-size:11px; color:var(--muted); }
- 
-    .avail-badge {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--green-text);
-      background: var(--green-bg);
-      padding: 5px 13px;
-      border-radius: 20px;
-    }
- 
+    .footer-copy { font-family: var(--mono); font-size: 11px; color: var(--dim); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeIn  { from{opacity:0} to{opacity:1} }
+    @keyframes slideUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+
+    .ai  { opacity:0; animation: fadeIn  0.5s ease forwards; }
+    .au  { opacity:0; animation: slideUp 0.55s cubic-bezier(.22,.68,0,1.1) forwards; }
+    .asc { opacity:0; animation: fadeIn  0.4s ease forwards; }
+
+    .d1{animation-delay:.05s} .d2{animation-delay:.12s} .d3{animation-delay:.19s}
+    .d4{animation-delay:.26s} .d5{animation-delay:.33s} .d6{animation-delay:.4s}
+    .d7{animation-delay:.47s} .d8{animation-delay:.54s} .d9{animation-delay:.61s}
+
     /* ── RESPONSIVE ── */
-    @media (max-width: 640px) {
-      .nav-links { display:none; }
-      .about-grid { grid-template-columns:1fr; }
-      .contact-grid { grid-template-columns:1fr; }
-      .exp-item { grid-template-columns:1fr; gap:0.5rem; }
-      .exp-meta { display:flex; gap:10px; align-items:center; }
-      .hero { padding: 4rem 0 3rem; }
+    @media (max-width: 768px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar {
+        position: relative;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding: 1.5rem;
+      }
+      .sid-nav { flex-direction: row; flex-wrap: wrap; gap: 4px; }
+      .sid-nav-label { display: none; }
+      .sid-social { flex-direction: row; margin-top: 1rem; }
+      main { padding: 2rem 1.5rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
- 
-  <header>
-    <div class="wrap">
-      <nav>
-        <a href="#" class="nav-logo ai d1">JB.dev</a>
-        <ul class="nav-links ai d2">
-          <li><a href="#sobre" id="nav-sobre">Sobre</a></li>
-          <li><a href="#stack">Stack</a></li>
-          <li><a href="#exp" id="nav-exp">Exp.</a></li>
-          <li><a href="#projects" id="nav-proj">Projetos</a></li>
-          <li><a href="#contact" id="nav-contact">Contato</a></li>
-        </ul>
-        <div class="nav-right ai d3">
-          <button class="lang-btn" onclick="toggleLang()" id="lang-btn">EN</button>
-        </div>
-      </nav>
-    </div>
-  </header>
- 
-  <div class="wrap">
- 
-    <!-- HERO -->
-    <div class="hero">
-      <div class="hero-badge ai d1">
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sid-top">
+      <p class="sid-label ai d1" id="sid-label">software_engineer</p>
+      <p class="sid-name ai d2">João <span>Batista</span></p>
+      <p class="sid-role ai d3" id="sid-role">@BatistaSec · São Paulo, BR</p>
+      <span class="sid-status ai d4">
         <span class="dot"></span>
-        <span id="h-badge">Aberto a oportunidades</span>
+        <span id="sid-status-txt">Buscando oportunidade</span>
+      </span>
+    </div>
+
+    <div class="sid-divider"></div>
+
+    <nav class="sid-nav ai d5">
+      <p class="sid-nav-label" id="nav-lbl">navegação</p>
+      <a href="#sobre" class="sid-link active" onclick="setActive(this)" id="nav-sobre">
+        <i class="ti ti-user"></i> <span id="nl-sobre">sobre</span>
+        <span class="lk-num">01</span>
+      </a>
+      <a href="#stack" class="sid-link" onclick="setActive(this)">
+        <i class="ti ti-stack-2"></i> <span>stack</span>
+        <span class="lk-num">02</span>
+      </a>
+      <a href="#exp" class="sid-link" onclick="setActive(this)" id="nav-exp">
+        <i class="ti ti-briefcase"></i> <span id="nl-exp">experiência</span>
+        <span class="lk-num">03</span>
+      </a>
+      <a href="#projects" class="sid-link" onclick="setActive(this)" id="nav-proj">
+        <i class="ti ti-code"></i> <span id="nl-proj">projetos</span>
+        <span class="lk-num">04</span>
+      </a>
+      <a href="#contact" class="sid-link" onclick="setActive(this)" id="nav-contact">
+        <i class="ti ti-send"></i> <span id="nl-contact">contato</span>
+        <span class="lk-num">05</span>
+      </a>
+    </nav>
+
+    <div class="sid-divider"></div>
+
+    <div class="sid-social ai d6">
+      <p class="sid-nav-label" id="social-lbl">links</p>
+      <a href="https://github.com/BatistaSec" class="sid-social-link" target="_blank" rel="noopener">
+        <i class="ti ti-brand-github"></i> BatistaSec
+      </a>
+      <a href="https://www.linkedin.com/in/joão-batista-2206321t" class="sid-social-link" target="_blank" rel="noopener">
+        <i class="ti ti-brand-linkedin"></i> LinkedIn
+      </a>
+      <a href="mailto:joaobazusec@gmail.com" class="sid-social-link">
+        <i class="ti ti-mail"></i> email
+      </a>
+    </div>
+
+    <div class="sid-divider"></div>
+
+    <button class="lang-btn ai d7" onclick="toggleLang()" id="lang-btn">
+      <i class="ti ti-world"></i> <span id="lang-txt">switch to EN</span>
+    </button>
+
+  </aside>
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- HERO -->
+    <div class="section hero-section" id="sobre">
+      <p class="hero-comment au d1"><span>// </span><span id="hero-comment-txt">olá, mundo. seja bem-vindo ao meu portfólio</span></p>
+      <div class="hero-title au d2">
+        <div><span class="ht-const">const</span> <span class="ht-name">dev</span> <span class="ht-eq">=</span> <span class="ht-str">"João Batista"</span><span class="ht-semi">;</span></div>
+        <div><span class="ht-const">const</span> <span class="ht-name">role</span> <span class="ht-eq">=</span> <span class="ht-str" id="hero-role-str">"Software Engineer"</span><span class="ht-semi">;</span></div>
+        <div><span class="ht-const">const</span> <span class="ht-name">status</span> <span class="ht-eq">=</span> <span class="ht-str" id="hero-status-str">"buscando_oportunidade"</span><span class="ht-semi">;</span></div>
       </div>
-      <p class="hero-sub au d2" id="h-sub">Engenheiro de Software · São Paulo, BR</p>
-      <h1 class="au d3">João<br><em>Batista.</em></h1>
-      <p class="hero-desc au d4" id="h-desc">Apaixonado por construir sistemas back-end sólidos e bem estruturados. Domino Java, Spring Boot e boas práticas de arquitetura — e estou pronto para contribuir no meu primeiro desafio profissional.</p>
-      <div class="hero-actions au d5">
+      <p class="hero-desc au d3" id="hero-desc">Apaixonado por construir sistemas back-end sólidos e bem estruturados. Domino Java, Spring Boot e boas práticas de arquitetura — e estou pronto para contribuir no meu primeiro desafio profissional.</p>
+      <div class="hero-actions au d4">
         <a href="mailto:joaobazusec@gmail.com" class="btn-primary">
-          <i class="ti ti-mail" aria-hidden="true"></i>
-          <span id="h-cta">Entrar em contato</span>
+          <i class="ti ti-mail"></i>
+          <span id="hero-cta">entrar em contato</span>
         </a>
         <a href="https://github.com/BatistaSec" target="_blank" rel="noopener" class="btn-ghost">
-          GitHub <i class="ti ti-arrow-right" aria-hidden="true"></i>
+          <i class="ti ti-brand-github"></i>
+          <span id="hero-gh">ver github</span>
         </a>
       </div>
     </div>
- 
-    <!-- SOBRE -->
-    <section id="sobre">
+
+    <!-- SOBRE / ABOUT -->
+    <div class="section">
       <div class="sec-head au d1">
-        <span class="sec-num">01</span>
-        <span class="sec-label" id="s-sobre">Sobre mim</span>
+        <span class="sec-prefix">/*</span>
+        <span class="sec-title" id="s-sobre">sobre_mim</span>
+        <span class="sec-prefix">*/</span>
         <div class="sec-line"></div>
       </div>
       <div class="about-grid">
         <div class="about-text au d2">
           <p id="about-p1">Sou <strong>João Batista</strong>, desenvolvedor back-end baseado em São Paulo. Tenho focado meus estudos em construir APIs REST robustas, seguras e bem documentadas usando o ecossistema Java.</p>
-          <p id="about-p2">Gosto de escrever código limpo, pensar em arquitetura e entender o <em>porquê</em> por trás das decisões técnicas — não só o <em>como</em>. Estou buscando minha primeira oportunidade para crescer junto de um time e colocar em prática tudo que aprendi.</p>
-          <p id="about-p3">Quando não estou codando, estou estudando novos padrões de design, explorando a documentação do Spring ou contribuindo com projetos pessoais no GitHub.</p>
+          <p id="about-p2">Gosto de escrever código limpo, pensar em arquitetura e entender o porquê por trás das decisões técnicas. Estou buscando minha primeira oportunidade para crescer junto de um time e colocar em prática tudo que aprendi.</p>
+          <p id="about-p3">Quando não estou codando, estou estudando design patterns, explorando a documentação do Spring ou contribuindo com projetos no GitHub.</p>
         </div>
         <div class="about-facts">
           <div class="fact asc d3">
-            <i class="ti ti-map-pin fact-icon" aria-hidden="true"></i>
+            <i class="ti ti-map-pin fact-icon"></i>
             <div>
-              <p class="fact-label" id="fl-loc">Localização</p>
+              <p class="fact-label" id="fl-loc">localização</p>
               <p class="fact-value">São Paulo, BR</p>
             </div>
           </div>
           <div class="fact asc d4">
-            <i class="ti ti-school fact-icon" aria-hidden="true"></i>
+            <i class="ti ti-briefcase fact-icon"></i>
             <div>
-              <p class="fact-label" id="fl-status">Status</p>
+              <p class="fact-label" id="fl-status">status</p>
               <p class="fact-value" id="fv-status">Buscando 1ª oportunidade</p>
             </div>
           </div>
           <div class="fact asc d5">
-            <i class="ti ti-brand-github fact-icon" aria-hidden="true"></i>
+            <i class="ti ti-brand-github fact-icon"></i>
             <div>
-              <p class="fact-label">GitHub</p>
+              <p class="fact-label">github</p>
               <p class="fact-value">BatistaSec</p>
             </div>
           </div>
           <div class="fact asc d6">
-            <i class="ti ti-mail fact-icon" aria-hidden="true"></i>
+            <i class="ti ti-mail fact-icon"></i>
             <div>
-              <p class="fact-label">Email</p>
+              <p class="fact-label">email</p>
               <p class="fact-value">joaobazusec@gmail.com</p>
             </div>
           </div>
         </div>
       </div>
-    </section>
- 
+    </div>
+
     <!-- STACK -->
-    <section id="stack">
+    <div class="section" id="stack">
       <div class="sec-head au d1">
-        <span class="sec-num">02</span>
-        <span class="sec-label" id="s-stack">Tecnologias</span>
+        <span class="sec-prefix">/*</span>
+        <span class="sec-title" id="s-stack">tech_stack</span>
+        <span class="sec-prefix">*/</span>
         <div class="sec-line"></div>
       </div>
       <div class="stack-grid">
-        <div class="stack-card asc d1"><i class="ti ti-coffee" aria-hidden="true"></i><span class="stack-name">Java 17</span><span class="stack-lvl" id="lv-java">Avançado</span></div>
-        <div class="stack-card asc d2"><i class="ti ti-leaf" aria-hidden="true"></i><span class="stack-name">Spring Boot</span><span class="stack-lvl" id="lv-spring">Avançado</span></div>
-        <div class="stack-card asc d3"><i class="ti ti-database" aria-hidden="true"></i><span class="stack-name">PostgreSQL</span><span class="stack-lvl" id="lv-pg">Avançado</span></div>
-        <div class="stack-card asc d3"><i class="ti ti-database" aria-hidden="true"></i><span class="stack-name">MySQL</span><span class="stack-lvl" id="lv-mysql">Avançado</span></div>
-        <div class="stack-card asc d4"><i class="ti ti-brand-python" aria-hidden="true"></i><span class="stack-name">Python</span><span class="stack-lvl" id="lv-python">Intermediário</span></div>
-        <div class="stack-card asc d5"><i class="ti ti-cloud" aria-hidden="true"></i><span class="stack-name">AWS</span><span class="stack-lvl" id="lv-aws">Intermediário</span></div>
-        <div class="stack-card asc d6"><i class="ti ti-brand-docker" aria-hidden="true"></i><span class="stack-name">Docker</span><span class="stack-lvl" id="lv-docker">Intermediário</span></div>
-        <div class="stack-card asc d7"><i class="ti ti-shield-lock" aria-hidden="true"></i><span class="stack-name">Spring Security</span><span class="stack-lvl" id="lv-sec">Intermediário</span></div>
-        <div class="stack-card asc d8"><i class="ti ti-git-branch" aria-hidden="true"></i><span class="stack-name">Git & GitHub</span><span class="stack-lvl" id="lv-git">Intermediário</span></div>
-        <div class="stack-card asc d9"><i class="ti ti-test-pipe" aria-hidden="true"></i><span class="stack-name">JUnit</span><span class="stack-lvl" id="lv-junit">Básico</span></div>
-      </div>
-    </section>
- 
-    <!-- EXPERIENCE -->
-    <section id="exp">
-      <div class="sec-head au d1">
-        <span class="sec-num">03</span>
-        <span class="sec-label" id="s-exp">Experiência</span>
-        <div class="sec-line"></div>
-      </div>
-      <div class="exp-list">
-        <div class="exp-item as d2">
-          <div class="exp-meta">
-            <span class="exp-period">2024 — <span id="e-present">Hoje</span></span>
-            <span class="exp-badge" id="eb1">Estudos</span>
-          </div>
-          <div>
-            <p class="exp-role" id="e1-role">Desenvolvedor Back-end (Projetos Pessoais)</p>
-            <p class="exp-company" id="e1-co">Autônomo · Remoto</p>
-            <p class="exp-desc" id="e1-desc">Desenvolvimento de APIs REST com Java 17 e Spring Boot, implementação de autenticação com JWT e Spring Security, integração com MySQL e PostgreSQL via JPA/Hibernate, e testes com JUnit. Foco em boas práticas como Clean Code, tratamento global de exceções e validação de dados com Bean Validation.</p>
-          </div>
+        <div class="stack-card asc d1">
+          <i class="ti ti-coffee"></i>
+          <span class="stack-name">Java 17</span>
+          <div class="stack-lvl"><div class="lvl-dots"><span class="lvl-dot on"></span><span class="lvl-dot on"></span><span class="lvl-dot on"></span><span class="lvl-dot"></span></div> <span id="lv-java">Avançado</span></div>
+        </div>
+        <div class="stack-card asc d2">
+          <i class="ti ti-leaf"></i>
+          <span class="stack-name">Spring Boot</span>
+          <div class="stack-lvl"><div class="lvl-dots"><span class="lvl-dot on"></span><span class="lvl-dot on"></span><span class="lvl-dot on"></span><span class="lvl-dot"></span></div> <span id="lv-spring">Avançado</span></div>
+        </div>
+        <div class="stack-card asc d3">
+          <i class="ti ti-database"></i>
+          <span class="stack-name">PostgreSQL</span>
+          <div class="stack-lvl"><div class="lvl-dots"><span class="lvl-dot on"></span><span class="lvl-dot on"></span><span class="lvl-dot on"></span><span class="lvl-dot"></span></div> <span id="lv-pg">Avançado</span></div>
+        </div>
+        <div class="stack-card asc d3">
+          <i class="ti ti-database"></i>
+          <span class="stack-name">MySQL</span>
+          <div class="stack-lvl"><div class="lvl-dots"><span class="lvl-dot on"></span><span class="lvl-dot on"></span><span class="lvl-dot on"></span><span class="lvl-dot"></span></div> <span id="lv-mysql">Avançado</span></div>
+        </div>
+        <div class="stack-card asc d4">
+          <i class="ti ti-brand-python"></i>
+          <span class="stack-name">Python</span>
+          <div class="stack-lvl"><div class="lvl-dots"><span class="lvl-dot on"></span><span class="lvl-dot on"></span><span class="lvl-dot"></span><span class="lvl-dot"></span></div> <span id="lv-python">Intermediário</span></div>
+        </div>
+        <div class="stack-card asc d5">
+          <i class="ti ti-cloud"></i>
+          <span class="stack-name">AWS</span>
+          <div class="stack-lvl"><div class="lvl-dots"><span class="lvl-dot on"></span><span class="lvl-dot on"></span><span class="lvl-dot"></span><span class="lvl-dot"></span></div> <span id="lv-aws">Intermediário</span></div>
+        </div>
+        <div class="stack-card asc d6">
+          <i class="ti ti-brand-docker"></i>
+          <span class="stack-name">Docker</span>
+          <div class="stack-lvl"><div class="lvl-dots"><span class="lvl-dot on"></span><span class="lvl-dot on"></span><span class="lvl-dot"></span><span class="lvl-dot"></span></div> <span id="lv-docker">Intermediário</span></div>
+        </div>
+        <div class="stack-card asc d7">
+          <i class="ti ti-shield-lock"></i>
+          <span class="stack-name">Spring Security</span>
+          <div class="stack-lvl"><div class="lvl-dots"><span class="lvl-dot on"></span><span class="lvl-dot on"></span><span class="lvl-dot"></span><span class="lvl-dot"></span></div> <span id="lv-sec">Intermediário</span></div>
+        </div>
+        <div class="stack-card asc d8">
+          <i class="ti ti-git-branch"></i>
+          <span class="stack-name">Git & GitHub</span>
+          <div class="stack-lvl"><div class="lvl-dots"><span class="lvl-dot on"></span><span class="lvl-dot on"></span><span class="lvl-dot"></span><span class="lvl-dot"></span></div> <span id="lv-git">Intermediário</span></div>
+        </div>
+        <div class="stack-card asc d9">
+          <i class="ti ti-test-pipe"></i>
+          <span class="stack-name">JUnit</span>
+          <div class="stack-lvl"><div class="lvl-dots"><span class="lvl-dot on"></span><span class="lvl-dot"></span><span class="lvl-dot"></span><span class="lvl-dot"></span></div> <span id="lv-junit">Básico</span></div>
         </div>
       </div>
-    </section>
- 
-    <!-- PROJECTS -->
-    <section id="projects">
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div class="section" id="exp">
       <div class="sec-head au d1">
-        <span class="sec-num">04</span>
-        <span class="sec-label" id="s-proj">Projetos</span>
+        <span class="sec-prefix">/*</span>
+        <span class="sec-title" id="s-exp">experiência</span>
+        <span class="sec-prefix">*/</span>
         <div class="sec-line"></div>
       </div>
- 
-      <div class="proj-tabs">
-        <button class="proj-tab active" onclick="switchTab('all')" id="tab-all">Todos</button>
-        <button class="proj-tab" onclick="switchTab('api')" id="tab-api">API REST</button>
-        <button class="proj-tab" onclick="switchTab('security')" id="tab-security">Segurança</button>
+      <div class="exp-item au d2">
+        <div class="exp-head">
+          <span class="exp-role" id="e1-role">Desenvolvedor Back-end · Projetos Pessoais</span>
+          <span class="exp-period">2024 — <span id="e-present">hoje</span></span>
+        </div>
+        <p class="exp-company" id="e1-co">// Autônomo · Remoto</p>
+        <p class="exp-desc" id="e1-desc">Desenvolvimento de APIs REST com Java 17 e Spring Boot, implementação de autenticação com JWT e Spring Security, integração com MySQL e PostgreSQL via JPA/Hibernate, e testes com JUnit. Foco em boas práticas como Clean Code, tratamento global de exceções e validação de dados com Bean Validation.</p>
       </div>
- 
+    </div>
+
+    <!-- PROJECTS -->
+    <div class="section" id="projects">
+      <div class="sec-head au d1">
+        <span class="sec-prefix">/*</span>
+        <span class="sec-title" id="s-proj">projetos</span>
+        <span class="sec-prefix">*/</span>
+        <div class="sec-line"></div>
+      </div>
+
+      <div class="proj-tabs au d2">
+        <button class="proj-tab active" onclick="switchTab('all')" id="tab-all">todos</button>
+        <button class="proj-tab" onclick="switchTab('api')" id="tab-api">API REST</button>
+        <button class="proj-tab" onclick="switchTab('security')" id="tab-security">segurança</button>
+      </div>
+
       <div class="proj-panel active" id="panel-all">
         <a class="proj-card" href="https://github.com/BatistaSec/Gerenciamento-de-Usuarios---API" target="_blank" rel="noopener">
           <div class="proj-top">
-            <span class="proj-name" id="p1-name">API de Gerenciamento de Usuários</span>
+            <span class="proj-name" id="p1-name">Gerenciamento de Usuários — API</span>
             <span class="proj-tag">API REST</span>
           </div>
-          <p class="proj-desc" id="p1-desc">API REST completa para gerenciamento de usuários com operações de CRUD, validação de campos com Bean Validation, tratamento global de exceções e integração com MySQL via Spring Data JPA.</p>
+          <p class="proj-desc" id="p1-desc">API REST completa para gerenciamento de usuários com CRUD, validação com Bean Validation, tratamento global de exceções e integração com MySQL via Spring Data JPA.</p>
           <div class="proj-footer">
             <div class="proj-techs">
               <span class="tech-pill">Java 17</span>
@@ -612,18 +849,18 @@
               <span class="tech-pill">JPA/Hibernate</span>
               <span class="tech-pill">Maven</span>
             </div>
-            <span class="proj-link"><i class="ti ti-brand-github" aria-hidden="true"></i> BatistaSec</span>
+            <span class="proj-link"><i class="ti ti-brand-github"></i> BatistaSec</span>
           </div>
         </a>
       </div>
- 
+
       <div class="proj-panel" id="panel-api">
         <a class="proj-card" href="https://github.com/BatistaSec/Gerenciamento-de-Usuarios---API" target="_blank" rel="noopener">
           <div class="proj-top">
-            <span class="proj-name">API de Gerenciamento de Usuários</span>
+            <span class="proj-name">Gerenciamento de Usuários — API</span>
             <span class="proj-tag">API REST</span>
           </div>
-          <p class="proj-desc">API REST completa para gerenciamento de usuários com operações de CRUD, validação de campos com Bean Validation, tratamento global de exceções e integração com MySQL via Spring Data JPA.</p>
+          <p class="proj-desc">API REST completa para gerenciamento de usuários com CRUD, validação com Bean Validation, tratamento global de exceções e integração com MySQL via Spring Data JPA.</p>
           <div class="proj-footer">
             <div class="proj-techs">
               <span class="tech-pill">Java 17</span>
@@ -631,16 +868,16 @@
               <span class="tech-pill">MySQL</span>
               <span class="tech-pill">JPA/Hibernate</span>
             </div>
-            <span class="proj-link"><i class="ti ti-brand-github" aria-hidden="true"></i> BatistaSec</span>
+            <span class="proj-link"><i class="ti ti-brand-github"></i> BatistaSec</span>
           </div>
         </a>
       </div>
- 
+
       <div class="proj-panel" id="panel-security">
-        <div class="proj-card" style="cursor:default; opacity:0.6;">
+        <div class="proj-card" style="opacity:0.5; cursor:default;">
           <div class="proj-top">
-            <span class="proj-name" id="p-coming">Em breve · Auth com JWT</span>
-            <span class="proj-tag" id="p-coming-tag">Segurança</span>
+            <span class="proj-name" id="p-coming">em breve · auth com JWT</span>
+            <span class="proj-tag" id="p-coming-tag">segurança</span>
           </div>
           <p class="proj-desc" id="p-coming-desc">Projeto de autenticação com JWT, refresh tokens e controle de acesso baseado em perfis. Em desenvolvimento.</p>
           <div class="proj-techs">
@@ -650,173 +887,171 @@
           </div>
         </div>
       </div>
-    </section>
- 
+    </div>
+
     <!-- CONTACT -->
-    <section id="contact" style="border-bottom:none;">
+    <div class="section" id="contact">
       <div class="sec-head au d1">
-        <span class="sec-num">05</span>
-        <span class="sec-label" id="s-contact">Contato</span>
+        <span class="sec-prefix">/*</span>
+        <span class="sec-title" id="s-contact">contato</span>
+        <span class="sec-prefix">*/</span>
         <div class="sec-line"></div>
       </div>
       <div class="contact-grid">
         <a class="contact-card asc d2" href="mailto:joaobazusec@gmail.com">
-          <i class="ti ti-mail" aria-hidden="true"></i>
+          <i class="ti ti-mail"></i>
           <div>
-            <p class="contact-label-sm">Email</p>
+            <p class="contact-label-sm">email</p>
             <p class="contact-value-sm">joaobazusec@gmail.com</p>
           </div>
         </a>
         <a class="contact-card asc d3" href="https://www.linkedin.com/in/joão-batista-2206321t" target="_blank" rel="noopener">
-          <i class="ti ti-brand-linkedin" aria-hidden="true"></i>
+          <i class="ti ti-brand-linkedin"></i>
           <div>
-            <p class="contact-label-sm">LinkedIn</p>
+            <p class="contact-label-sm">linkedin</p>
             <p class="contact-value-sm">joão-batista-2206321t</p>
           </div>
         </a>
         <a class="contact-card asc d4" href="https://github.com/BatistaSec" target="_blank" rel="noopener">
-          <i class="ti ti-brand-github" aria-hidden="true"></i>
+          <i class="ti ti-brand-github"></i>
           <div>
-            <p class="contact-label-sm">GitHub</p>
+            <p class="contact-label-sm">github</p>
             <p class="contact-value-sm">BatistaSec</p>
           </div>
         </a>
         <a class="contact-card asc d5" href="https://jo-zo-ez-ud.vercel.app/" target="_blank" rel="noopener">
-          <i class="ti ti-world" aria-hidden="true"></i>
+          <i class="ti ti-world"></i>
           <div>
-            <p class="contact-label-sm" id="cl-site">Site</p>
+            <p class="contact-label-sm" id="cl-site">site</p>
             <p class="contact-value-sm">jo-zo-ez-ud.vercel.app</p>
           </div>
         </a>
       </div>
-    </section>
- 
-    <footer>
-      <span class="footer-copy">© 2026 João Batista</span>
-      <span class="avail-badge">
+    </div>
+
+    <footer class="main-footer">
+      <span class="footer-copy">// © 2026 João Batista · built with ❤️</span>
+      <span class="sid-status" style="font-size:10px;">
         <span class="dot"></span>
         <span id="f-avail">Aberto a oportunidades</span>
       </span>
     </footer>
- 
-  </div><!-- /wrap -->
- 
-  <script>
-    let isEN = false;
- 
-    const T = {
-      PT: {
-        'lang-btn':    'EN',
-        'h-badge':     'Aberto a oportunidades',
-        'h-sub':       'Engenheiro de Software · São Paulo, BR',
-        'h-desc':      'Apaixonado por construir sistemas back-end sólidos e bem estruturados. Domino Java, Spring Boot e boas práticas de arquitetura — e estou pronto para contribuir no meu primeiro desafio profissional.',
-        'h-cta':       'Entrar em contato',
-        'nav-sobre':   'Sobre',
-        'nav-exp':     'Exp.',
-        'nav-proj':    'Projetos',
-        'nav-contact': 'Contato',
-        's-sobre':     'Sobre mim',
-        's-stack':     'Tecnologias',
-        's-exp':       'Experiência',
-        's-proj':      'Projetos',
-        's-contact':   'Contato',
-        'about-p1':    'Sou João Batista, desenvolvedor back-end baseado em São Paulo. Tenho focado meus estudos em construir APIs REST robustas, seguras e bem documentadas usando o ecossistema Java.',
-        'about-p2':    'Gosto de escrever código limpo, pensar em arquitetura e entender o porquê por trás das decisões técnicas — não só o como. Estou buscando minha primeira oportunidade para crescer junto de um time.',
-        'about-p3':    'Quando não estou codando, estou estudando novos padrões de design, explorando a documentação do Spring ou contribuindo com projetos pessoais no GitHub.',
-        'fl-loc':      'Localização',
-        'fl-status':   'Status',
-        'fv-status':   'Buscando 1ª oportunidade',
-        'lv-java':     'Avançado','lv-spring':'Avançado','lv-pg':'Avançado','lv-mysql':'Avançado',
-        'lv-python':   'Intermediário','lv-aws':'Intermediário','lv-docker':'Intermediário',
-        'lv-sec':      'Intermediário','lv-git':'Intermediário','lv-junit':'Básico',
-        'e-present':   'Hoje',
-        'eb1':         'Estudos',
-        'e1-role':     'Desenvolvedor Back-end (Projetos Pessoais)',
-        'e1-co':       'Autônomo · Remoto',
-        'e1-desc':     'Desenvolvimento de APIs REST com Java 17 e Spring Boot, implementação de autenticação com JWT e Spring Security, integração com MySQL e PostgreSQL via JPA/Hibernate, e testes com JUnit.',
-        'tab-all':     'Todos','tab-api':'API REST','tab-security':'Segurança',
-        'p1-name':     'API de Gerenciamento de Usuários',
-        'p1-desc':     'API REST completa para gerenciamento de usuários com operações de CRUD, validação de campos com Bean Validation, tratamento global de exceções e integração com MySQL via Spring Data JPA.',
-        'p-coming':    'Em breve · Auth com JWT',
-        'p-coming-tag':'Segurança',
-        'p-coming-desc':'Projeto de autenticação com JWT, refresh tokens e controle de acesso baseado em perfis. Em desenvolvimento.',
-        'cl-site':     'Site',
-        'f-avail':     'Aberto a oportunidades',
-      },
-      EN: {
-        'lang-btn':    'PT',
-        'h-badge':     'Open to opportunities',
-        'h-sub':       'Software Engineer · São Paulo, BR',
-        'h-desc':      'Passionate about building solid, well-structured back-end systems. I master Java, Spring Boot and architecture best practices — and I\'m ready to contribute in my first professional challenge.',
-        'h-cta':       'Get in touch',
-        'nav-sobre':   'About',
-        'nav-exp':     'Exp.',
-        'nav-proj':    'Projects',
-        'nav-contact': 'Contact',
-        's-sobre':     'About me',
-        's-stack':     'Tech stack',
-        's-exp':       'Experience',
-        's-proj':      'Projects',
-        's-contact':   'Contact',
-        'about-p1':    'I\'m João Batista, a back-end developer based in São Paulo. I\'ve been focused on building robust, secure, and well-documented REST APIs using the Java ecosystem.',
-        'about-p2':    'I enjoy writing clean code, thinking about architecture, and understanding the why behind technical decisions — not just the how. I\'m looking for my first opportunity to grow alongside a team.',
-        'about-p3':    'When I\'m not coding, I\'m studying new design patterns, exploring Spring documentation, or contributing to personal projects on GitHub.',
-        'fl-loc':      'Location',
-        'fl-status':   'Status',
-        'fv-status':   'Looking for 1st opportunity',
-        'lv-java':     'Advanced','lv-spring':'Advanced','lv-pg':'Advanced','lv-mysql':'Advanced',
-        'lv-python':   'Intermediate','lv-aws':'Intermediate','lv-docker':'Intermediate',
-        'lv-sec':      'Intermediate','lv-git':'Intermediate','lv-junit':'Basic',
-        'e-present':   'Present',
-        'eb1':         'Personal Projects',
-        'e1-role':     'Back-end Developer (Personal Projects)',
-        'e1-co':       'Freelance · Remote',
-        'e1-desc':     'Development of REST APIs with Java 17 and Spring Boot, JWT authentication with Spring Security, MySQL and PostgreSQL integration via JPA/Hibernate, and unit testing with JUnit.',
-        'tab-all':     'All','tab-api':'REST API','tab-security':'Security',
-        'p1-name':     'User Management API',
-        'p1-desc':     'Full REST API for user management with CRUD operations, field validation with Bean Validation, global exception handling, and MySQL integration via Spring Data JPA.',
-        'p-coming':    'Coming soon · JWT Auth',
-        'p-coming-tag':'Security',
-        'p-coming-desc':'Authentication project with JWT, refresh tokens, and role-based access control. Currently in development.',
-        'cl-site':     'Website',
-        'f-avail':     'Open to opportunities',
-      }
-    };
- 
-    function toggleLang() {
-      isEN = !isEN;
-      const lang = isEN ? 'EN' : 'PT';
-      document.documentElement.lang = isEN ? 'en' : 'pt-BR';
-      const t = T[lang];
-      for (const [id, val] of Object.entries(t)) {
-        const el = document.getElementById(id);
-        if (el) el.textContent = val;
-      }
+
+  </main>
+</div>
+
+<script>
+  let isEN = false;
+
+  const T = {
+    PT: {
+      'lang-btn': '', 'lang-txt': 'switch to EN',
+      'sid-label': 'software_engineer', 'sid-status-txt': 'Buscando oportunidade',
+      'nav-lbl': 'navegação', 'social-lbl': 'links',
+      'nl-sobre': 'sobre', 'nl-exp': 'experiência', 'nl-proj': 'projetos', 'nl-contact': 'contato',
+      'hero-comment-txt': 'olá, mundo. seja bem-vindo ao meu portfólio',
+      'hero-role-str': '"Software Engineer"', 'hero-status-str': '"buscando_oportunidade"',
+      'hero-desc': 'Apaixonado por construir sistemas back-end sólidos e bem estruturados. Domino Java, Spring Boot e boas práticas de arquitetura — e estou pronto para contribuir no meu primeiro desafio profissional.',
+      'hero-cta': 'entrar em contato', 'hero-gh': 'ver github',
+      's-sobre': 'sobre_mim', 's-stack': 'tech_stack', 's-exp': 'experiência', 's-proj': 'projetos', 's-contact': 'contato',
+      'about-p1': 'Sou João Batista, desenvolvedor back-end baseado em São Paulo. Tenho focado meus estudos em construir APIs REST robustas, seguras e bem documentadas usando o ecossistema Java.',
+      'about-p2': 'Gosto de escrever código limpo, pensar em arquitetura e entender o porquê por trás das decisões técnicas. Estou buscando minha primeira oportunidade para crescer junto de um time.',
+      'about-p3': 'Quando não estou codando, estou estudando design patterns, explorando a documentação do Spring ou contribuindo com projetos no GitHub.',
+      'fl-loc': 'localização', 'fl-status': 'status', 'fv-status': 'Buscando 1ª oportunidade',
+      'lv-java':'Avançado','lv-spring':'Avançado','lv-pg':'Avançado','lv-mysql':'Avançado',
+      'lv-python':'Intermediário','lv-aws':'Intermediário','lv-docker':'Intermediário','lv-sec':'Intermediário','lv-git':'Intermediário','lv-junit':'Básico',
+      'e-present': 'hoje', 'e1-role': 'Desenvolvedor Back-end · Projetos Pessoais', 'e1-co': '// Autônomo · Remoto',
+      'e1-desc': 'Desenvolvimento de APIs REST com Java 17 e Spring Boot, implementação de autenticação com JWT e Spring Security, integração com MySQL e PostgreSQL via JPA/Hibernate, e testes com JUnit.',
+      'tab-all': 'todos', 'tab-api': 'API REST', 'tab-security': 'segurança',
+      'p1-name': 'Gerenciamento de Usuários — API',
+      'p1-desc': 'API REST completa para gerenciamento de usuários com CRUD, validação com Bean Validation, tratamento global de exceções e integração com MySQL via Spring Data JPA.',
+      'p-coming': 'em breve · auth com JWT', 'p-coming-tag': 'segurança',
+      'p-coming-desc': 'Projeto de autenticação com JWT, refresh tokens e controle de acesso baseado em perfis. Em desenvolvimento.',
+      'cl-site': 'site', 'f-avail': 'Aberto a oportunidades',
+    },
+    EN: {
+      'lang-btn': '', 'lang-txt': 'switch to PT',
+      'sid-label': 'software_engineer', 'sid-status-txt': 'Open to opportunities',
+      'nav-lbl': 'navigation', 'social-lbl': 'links',
+      'nl-sobre': 'about', 'nl-exp': 'experience', 'nl-proj': 'projects', 'nl-contact': 'contact',
+      'hero-comment-txt': 'hello, world. welcome to my portfolio',
+      'hero-role-str': '"Software Engineer"', 'hero-status-str': '"open_to_work"',
+      'hero-desc': 'Passionate about building solid, well-structured back-end systems. I master Java, Spring Boot and architecture best practices — ready to contribute in my first professional challenge.',
+      'hero-cta': 'get in touch', 'hero-gh': 'view github',
+      's-sobre': 'about_me', 's-stack': 'tech_stack', 's-exp': 'experience', 's-proj': 'projects', 's-contact': 'contact',
+      'about-p1': 'I\'m João Batista, a back-end developer based in São Paulo. I\'ve been focused on building robust, secure, and well-documented REST APIs using the Java ecosystem.',
+      'about-p2': 'I enjoy writing clean code, thinking about architecture, and understanding the why behind technical decisions. I\'m looking for my first opportunity to grow alongside a team.',
+      'about-p3': 'When I\'m not coding, I\'m studying design patterns, exploring Spring documentation, or contributing to projects on GitHub.',
+      'fl-loc': 'location', 'fl-status': 'status', 'fv-status': 'Looking for 1st opportunity',
+      'lv-java':'Advanced','lv-spring':'Advanced','lv-pg':'Advanced','lv-mysql':'Advanced',
+      'lv-python':'Intermediate','lv-aws':'Intermediate','lv-docker':'Intermediate','lv-sec':'Intermediate','lv-git':'Intermediate','lv-junit':'Basic',
+      'e-present': 'present', 'e1-role': 'Back-end Developer · Personal Projects', 'e1-co': '// Freelance · Remote',
+      'e1-desc': 'Development of REST APIs with Java 17 and Spring Boot, JWT authentication with Spring Security, MySQL and PostgreSQL integration via JPA/Hibernate, and unit testing with JUnit.',
+      'tab-all': 'all', 'tab-api': 'REST API', 'tab-security': 'security',
+      'p1-name': 'User Management API',
+      'p1-desc': 'Full REST API for user management with CRUD operations, field validation with Bean Validation, global exception handling, and MySQL integration via Spring Data JPA.',
+      'p-coming': 'coming soon · JWT Auth', 'p-coming-tag': 'security',
+      'p-coming-desc': 'Authentication project with JWT, refresh tokens, and role-based access control. Currently in development.',
+      'cl-site': 'website', 'f-avail': 'Open to opportunities',
     }
- 
-    function switchTab(name) {
-      document.querySelectorAll('.proj-tab').forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.proj-panel').forEach(p => p.classList.remove('active'));
-      document.getElementById('tab-' + name).classList.add('active');
-      document.getElementById('panel-' + name).classList.add('active');
+  };
+
+  function toggleLang() {
+    isEN = !isEN;
+    document.documentElement.lang = isEN ? 'en' : 'pt-BR';
+    const t = T[isEN ? 'EN' : 'PT'];
+    for (const [id, val] of Object.entries(t)) {
+      if (id === 'lang-btn') continue;
+      const el = document.getElementById(id);
+      if (el) el.textContent = val;
     }
- 
-    // Intersection Observer for scroll animations
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.style.animationPlayState = 'running';
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.1 });
- 
-    document.querySelectorAll('.au, .ai, .as, .asc').forEach(el => {
-      el.style.animationPlayState = 'paused';
-      io.observe(el);
+  }
+
+  function switchTab(name) {
+    document.querySelectorAll('.proj-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.proj-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    document.getElementById('panel-' + name).classList.add('active');
+  }
+
+  function setActive(el) {
+    document.querySelectorAll('.sid-link').forEach(l => l.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  // Scroll spy
+  const sections = ['sobre','stack','exp','projects','contact'];
+  const links = {};
+  sections.forEach(id => { links[id] = document.querySelector(`.sid-link[href="#${id}"]`); });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting && links[e.target.id]) {
+        document.querySelectorAll('.sid-link').forEach(l => l.classList.remove('active'));
+        links[e.target.id].classList.add('active');
+      }
     });
-  </script>
- 
+  }, { threshold: 0.4 });
+
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+
+  // Scroll animation
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.animationPlayState = 'running';
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.au, .ai, .asc').forEach(el => {
+    el.style.animationPlayState = 'paused';
+    io.observe(el);
+  });
+</script>
 </body>
 </html>
- 
